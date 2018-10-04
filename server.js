@@ -1,6 +1,6 @@
 const express = require("express");
 const bodyparser = require("body-parser");
-const appRoute = require("./routes/route");
+const appRoute = require("./routes/route.js");
 
 const app = express();
 
@@ -14,7 +14,10 @@ app.use(function(req, res, next){
     next();  
 })
 
-app.use('/', appRoute);
+// app.use('/', appRoute);
+app.get("/", (req, res)=> {
+    res.sendFile(__dirname + "/public/index.html");
+})
 
 app.set('views' , './view');
 

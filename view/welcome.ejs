@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- use let for block level scope ,eg-for loop & var is for function level -->
+
+    <ul>
+       <% for(let m of menu){ %>
+       <li>
+         <a href="<%= m.url %>"> <%= m.name%> </a>
+       </li>
+       <% }%>
+    </ul>
+    <h1> Welcome <%= username%> </h1>
+</body>
+</html>

@@ -1,0 +1,39 @@
+/* @font-face {
+    font-family: 'Luna';
+    src: url("../../Luna.ttf");
+} */
+
+html{
+    height: 100%;
+    overflow: hidden;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    background-color: blue;
+}
+
+.containerH {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: blue;
+  }
+  @media (min-width: 768px) {
+    .containerH {
+      width: 750px;
+    }
+  }
+  @media (min-width: 992px) {
+    .containerH {
+      width: 970px;
+    }
+  }
+  @media (min-width: 1200px) {
+    .containerH {
+      width: 1170px;
+    }
+  }
