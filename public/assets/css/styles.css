@@ -1,39 +1,333 @@
-/* @font-face {
-    font-family: 'Luna';
-    src: url("../../Luna.ttf");
-} */
+/* @import "nib" */
 
+@font-face {
+  font-family: 'Luna';
+  src: url("./Luna.ttf");
+}
 html{
-    height: 100%;
-    overflow: hidden;
+  height: 100%;
+  overflow: hidden;
 }
-
 *{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    background-color: blue;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  transition: all .15s;
+  outline: none;
 }
 
+body{
+  color: #000;
+  margin:0;
+  padding: 0;
+  perspective: 1px;
+  transform-style: preserve-3d;
+  height: 100%;
+  overflow-y : scroll;
+  overflow-x : hidden;
+}
+
+header {
+  box-sizing: border-box;
+  min-height: 100vh;
+  /* padding: 30vw 40vw 5vw;
+  padding: ; */
+  position: relative;
+  transform-style: inherit;
+  width: 100vw;
+  margin-bottom: 12%;
+  color: #f1f1f1;
+}
+
+.hig {
+  /* margin-top: -100px; */
+  /* padding: 30vw 40vw 5vw; */
+
+  margin: 20% auto 0;  
+  font-family: "Luna";
+
+}
+
+header, header:before {
+  background: 50% 50% /cover;
+}
+
+header::before {
+  bottom: 0;
+  content: "";
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: block;
+  background-image: url("../image/img2.jpeg");
+  background-size: cover;
+  /* background-attachment: fixed; */
+  transform-origin: center center 0;
+  transform : translateZ(-1px) scale(2);
+  z-index: -1;
+  min-height: 100vh;
+
+}
+
+header * {
+  font-weight: normal;
+  letter-spacing: 0.2em;
+  text-align: center;
+  margin: 0;
+  padding: 1em 0;
+}
+.x{
+  /* z-index: 6; */
+  position: absolute;
+}
+
+.img{
+  background-image: url("../image/img2.jpeg");
+  background-attachment: inherit;
+  background-size: cover;
+  background-position: center;
+  
+  height : 100%;
+}
+
+.section{
+  /* margin-top: 940px; */
+}
+
+.hig, header div{
+  background: rgba(0,0,0,0.5);
+  width: 50%;
+}
+header div{
+  margin: 0 auto;
+  width: 75%;
+}
+
+
+
+/* -----------------------------container-------------------------- */
 .containerH {
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
-    background-color: blue;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (min-width: 768px) {
+  .containerH {
+    width: 750px;
   }
-  @media (min-width: 768px) {
-    .containerH {
-      width: 750px;
-    }
+}
+@media (min-width: 992px) {
+  .containerH {
+    width: 970px;
   }
-  @media (min-width: 992px) {
-    .containerH {
-      width: 970px;
-    }
+}
+@media (min-width: 1200px) {
+  .containerH {
+    width: 1170px;
   }
-  @media (min-width: 1200px) {
-    .containerH {
-      width: 1170px;
-    }
-  }
+}
+
+.center{
+  margin: 0 22%;
+}
+
+/* ===========================footer============== */
+footer {
+  background-color: #454749;
+  color: #ffffff;
+  margin-top: 7%;
+  width: 100%;
+  height: 150px;
+  font-size: 135%;
+}
+
+footer p {
+  margin-top: 1%;
+  color: #888;
+  text-align: center;
+}
+
+footer ul {
+  margin: 20px auto;
+  margin-top: 30px;
+  padding: 0px;
+  display: block;
+  text-decoration: none;
+  width: 271px;
+}
+
+footer ul li {
+  display: inline-block;
+  list-style: none;
+  padding:0 5px;
+}
+
+footer ul li a{
+  display: block;
+  /* background-color: #828282; */
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  font-size: 26px;
+
+}
+
+ul li a i{
+  color: #fff;
+  padding: 6px 0px 0px 8px;
+}
+
+.gplus:hover {
+  transition-duration: 1s;
+  color: #dd4b39;
+}
+
+.github:hover{
+  transition-duration: 1s;
+  color: #333;
+}
+
+.medium:hover{
+  transition-duration: 1s;
+  color: #00ab6c;
+}
+
+.linkedin:hover{
+  transition-duration: 1s;
+  color: #0077b5;
+}
+
+.twitter:hover{
+  transition-duration: 1s;
+  color: #1da1f2;
+  /* background-color: #fff; */
+}
+
+footer ul li a:hover {
+  transition-duration: 1.0s;
+  /* background-color: #252b33; */
+}
+/* -================changes================- */
+.info{
+  margin-top: 12%;
+  font-family: 'Montserrat', sans-serif;
+  word-spacing: 1%;
+  font-size: 18px;
+}
+
+#inputbox{
+  margin-top: 5%;
+}
+
+button{
+  margin-top: 5px;
+  color: #000;
+}
+
+.buttonH{
+  margin-top: 3%;
+  margin-left: 19%;
+
+}
+
+.buttonSec{
+  margin-left: 45%;
+}
+
+#or {
+  width: 4.375em;
+  margin-top: 3%;
+  font-family: "Luna";
+  margin-left: 47%;
+}
+
+textarea {
+  resize: none;
+  color: #000;
+  font-family: "Luna";
+
+}
+
+#custom-button{
+  padding: 10px;
+  color: white;
+  background-color: #009578;
+  border: 1px solid #000;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#custom-button:hover {
+  background-color: #00b28f;
+}
+
+#custom-text {
+  margin-left: 10px;
+  font-family: sans-serif;
+  color: #aaa;
+}
+
+/* ======================send btn========= */
+.file_button{
+  margin-top: 73px;
+}
+
+.send_button{
+  margin-left: 21%;
+}
+
+.upload_file{
+  
+}
+
+.article_button{
+  margin-left: 43%;
+  padding: 14px 2rem;
+}
+
+span.distance{
+  /* margin-top:  */
+}
+
+.article_section{
+  /* display: none; */
+}
+
+.filesend_section{
+  /* display: none; */
+}
+
+.file_pick{
+padding: 10px;
+color: white;
+background-color: #009578;
+border: 1px solid #000;
+border-radius: 5px;
+cursor: pointer;
+margin: 0 41%;
+margin-top: 73px;
+
+}
+
+
+/* buttons */
+.upload_file {
+  padding: 14px 2rem;
+  background-color: #00ab6c;
+  color: white;
+  border: #f1f1f1;    
+}
+
+button{
+  border-radius: 35px;
+  border: 0px;
+
+}
+
+button:hover{
+  transition: 1s;
+  background-color: #00ab6c;
+  color: white;
+}

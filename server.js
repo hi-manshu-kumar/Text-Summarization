@@ -1,12 +1,16 @@
 const express = require("express");
 const bodyparser = require("body-parser");
 const appRoute = require("./routes/route.js");
+const formidable = require('formidable');
+const fs = require('fs');
+const pdf = require('pdf-parse');
+
 
 const app = express();
 
-app.use(express.static("pulic"));
-app.use(bodyparser.urlencoded({encoding:false}));
+app.use(express.static(__dirname + '/public'));
 app.use(bodyparser.json());
+app.use(bodyparser.urlencoded({extended:false}));
 
 app.use(function(req, res, next){
     res.header("Access-Control-Allow-Origin","*");
@@ -14,20 +18,15 @@ app.use(function(req, res, next){
     next();  
 })
 
-// app.use('/', appRoute);
-app.get("/", (req, res)=> {
-    res.sendFile(__dirname + "/public/index.html");
-})
-
 app.set('views' , './view');
-
 app.set('view engine', 'ejs');
+
+app.use('/', appRoute);
 
 app.use(function (req, res, next){
     res.send("Oops somehting wrong in url");
     next();
-})
-
+});
 const port = process.env.PORT || 1234;
 
 app.listen(port , ()=> {

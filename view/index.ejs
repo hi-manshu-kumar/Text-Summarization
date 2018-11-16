@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.5/angular.min.js">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+        crossorigin="anonymous">
+    <title>Text - Summarizer</title>
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <script src="./assets/js/index.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="hig">
+            <h1>Text-Summarizer</h1>
+            <p>MEAN // Machine Learning !!</p>
+        </div>
+        <div class="section info">A summary is a text that is produced from one or more texts, that conveys important
+            information in the original text, and it is of a shorter form. The goal of automatic text summarization is
+            presenting the source text into a shorter version with meaningful semantics. The most important advantage
+            of using a summary is it reduces the reading time.</div>
+        <br> <br>
+        <button class="article_button" onclick="showDiv()">Write Article</button>
+
+        <button class="upload_file" onclick="showDiv2()">Upload File</button>
+        
+        <form action="/" method="POST"></form>
+        <span class="article_section" style="display:none;" id="article_section_id">
+            <textarea name="article" id="inputbox" cols="60" rows="10" class="center" placeholder="Enter your article here"></textarea>
+            <button type="submit" class="center btn btn-primary buttonH " id="summ">Summarize It</button>
+        </span>
+
+        <span class="filesend_section" id="filesend_section_id" style="display:none;">
+        <form action="/snd" method="POST"  enctype="multipart/form-data">
+            <input type="file" name="upload" class="file_pick" required multiple>
+
+            <button type="submit" id="custom-button" class="center buttonH send_button file_button">Send It</button>
+        </form>
+        </span>
+        
+    </header>
+    
+    <script type="text/javascript">
+        const realFileBtn = document.getElementById("real-file");
+        const customBtn = document.getElementById("custom-button");
+        const customTxt = document.getElementById("custom-text");
+
+        customBtn.addEventListener("click", function () {
+            realFileBtn.click();
+        });
+
+        realFileBtn.addEventListener("change", function () {
+            if (realFileBtn.value) {
+                customTxt.innerHTML = realFileBtn.value.match(
+                    /[\/\\]([\w\d\s\.\-\(\)]+)$/
+                )[1];
+            } else {
+                customTxt.innerHTML = "No file chosen, yet.";
+            }
+        });
+
+
+        function showDiv() {
+            document.getElementById("article_section_id").style.display = "block";
+            document.getElementById("filesend_section_id").style.display = "none";
+        }
+
+        function showDiv2() {
+            document.getElementById("filesend_section_id").style.display = "block";
+            document.getElementById("article_section_id").style.display = "none";
+        }
+        window.addEventListener("DOMContentLoaded", init);
+
+
+function init(){
+    console.log("hi");
+    document.getElementById("summ").addEventListener("click", convertJson);
+}
+
+function convertJson(){
+    console.log("insde the convertJson");
+    var x = document.getElementById("inputbox").value;
+    var article = JSON.stringify(x);
+    console.log({article});
+}
+    </script>
+</body>
+
+</html>
