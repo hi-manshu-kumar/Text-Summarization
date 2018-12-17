@@ -1,10 +1,6 @@
 const express = require("express");
 const bodyparser = require("body-parser");
 const appRoute = require("./routes/route.js");
-const formidable = require('formidable');
-const fs = require('fs');
-const pdf = require('pdf-parse');
-
 
 const app = express();
 

@@ -1,25 +1,27 @@
 const express = require("express");
 const router = express.Router();
-const path = require('path');
+const formidable = require('formidable');
+const fs = require('fs');
+const pdf = require('pdf-parse');
 
-router.get("/", (req, res)=> {
+router.get("/", (req, res, next)=> {
     res.render("index");
+    next();
 })
 
-router.post("/" , (req, res) => {
+router.post("/" , (req, res, next) => {
     console.log(req.body.article);
+    let y = req.body.article
     res.send("article recieved");
+    fs.writeFile( __dirname + "/../json/output.json", y, function (err) {
+        if (err) throw err;
+        console.log('Saved!');
+    });
+    
+    next();
 });
 
-router.post("/send", (req, res) => {
-    console.log(req.body.article);
-    let x = req.body.arc;
-    console.log(`Artcile is \n ${  x || "not found"}`);
-    res.status(200).send(`Artcile is \n ${  x || "not found"}`);    
-});
-
-
-router.post("/snd", (req, res) => {
+router.post("/snd", (req, res, next) => {
 
     console.log("/post handled");
     var form = new formidable.IncomingForm();
@@ -27,7 +29,7 @@ router.post("/snd", (req, res) => {
     form.parse(req);
 
     form.on('fileBegin', function (name, file){
-        file.path = __dirname + '/uploads/' + file.name;
+        file.path = __dirname + '/../uploads/' + file.name;
     });
 
     form.on('file', function (name, file){
@@ -38,20 +40,21 @@ router.post("/snd", (req, res) => {
         pdf(dataBuffer).then(function(data) {
             
             console.log(data.info.Author);
-            var article = {
+            let article = {
                 author: data.info.Author,
                 article: data.text
             };
 
-            var y = JSON.stringify(article);
+            let y = JSON.stringify(article);
 
-            fs.writeFile( __dirname + "/json/output.json", y, function (err) {
+            fs.writeFile( __dirname + "/../json/output.json", y, function (err) {
                 if (err) throw err;
                 console.log('Saved!');
-            })
+            });
         });
     });
-    res.render("index");
+    res.redirect("/");
+    next();
 });
 
 

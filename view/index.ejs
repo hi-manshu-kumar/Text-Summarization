@@ -32,22 +32,24 @@
 
         <button class="upload_file" onclick="showDiv2()">Upload File</button>
         
-        <form action="/" method="POST"></form>
-        <span class="article_section" style="display:none;" id="article_section_id">
-            <textarea name="article" id="inputbox" cols="60" rows="10" class="center" placeholder="Enter your article here"></textarea>
-            <button type="submit" class="center btn btn-primary buttonH " id="summ">Summarize It</button>
-        </span>
+        <form action="/" method="POST">
+            <span class="article_section" style="display:none;" id="article_section_id">
+                <textarea name="article" id="inputbox" cols="60" rows="10" class="center" placeholder="Enter your article here"></textarea>
+                <button type="submit" class="center btn btn-primary buttonH " id="summ">Summarize It</button>
+            </span>
+        </form>
 
         <span class="filesend_section" id="filesend_section_id" style="display:none;">
+        
         <form action="/snd" method="POST"  enctype="multipart/form-data">
-            <input type="file" name="upload" class="file_pick" required multiple>
-
+            <input type="file" name="upload" class="file_pick"  required multiple>
             <button type="submit" id="custom-button" class="center buttonH send_button file_button">Send It</button>
         </form>
         </span>
         
     </header>
     
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script type="text/javascript">
         const realFileBtn = document.getElementById("real-file");
         const customBtn = document.getElementById("custom-button");
@@ -64,6 +66,7 @@
                 )[1];
             } else {
                 customTxt.innerHTML = "No file chosen, yet.";
+                swal ( "Oops" ,  "Something went wrong! Try again..." ,  "error" );
             }
         });
 
@@ -88,8 +91,12 @@ function init(){
 function convertJson(){
     console.log("insde the convertJson");
     var x = document.getElementById("inputbox").value;
+    if(x == ""){
+        swal ( "Oops" ,  "Something went wrong! Try again..." ,  "error" );
+    }else {
     var article = JSON.stringify(x);
     console.log({article});
+    }
 }
     </script>
 </body>
